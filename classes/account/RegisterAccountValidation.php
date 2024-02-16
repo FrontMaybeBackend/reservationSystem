@@ -10,9 +10,11 @@ class RegisterAccountValidation extends RegisterAccount
         parent::__construct($name, $surname, $password, $email, $phone);
     }
 
-   private $errors = [
+   private  $errors = [
        'Empty'=>"Inputs cant be empty",
        'Email'=>"Bad format for email",
+       'Length'=> "Name and surname only can have 12 letters",
+       'String'=> "Name and surname only can have letters",
    ];
 
 
@@ -20,8 +22,15 @@ class RegisterAccountValidation extends RegisterAccount
         $check = false;
         if($this->checkEmpty()){
             $check = true;
-        }else{
-            $newUser = new RegisterAccount($this->name,$this->surname,$this->password, $this->email, $this->phone);
+        }elseif($this->checkLength()){
+            $check = true;
+        }elseif ($this->checkFormat()){
+            $check = true;
+        }elseif ($this->checkUserExit()){
+            $check = true;
+        }
+        else{
+            $newUser = new RegisterAccount($this->name,$this->surname,password_hash($this->password,PASSWORD_DEFAULT), $this->email, $this->phone);
             $newUser->registerNew();
             echo "udało się zarejestrować";
         }
@@ -29,19 +38,46 @@ class RegisterAccountValidation extends RegisterAccount
 
     }
 
+
     public function checkEmpty(){
         $check = false;
         foreach($this as $key){
             if(empty($key)){
                 $check = true;
                 echo $this->errors['Empty']  ;
-            }else{
-                foreach($this as $key => $value){
-                    echo "$key =>$value" . "<br>";
-                }
             }
         }
         return $check;
+    }
+
+    public function checkLength(){
+        $check = false;
+        if(strlen($this->name < 12) || strlen($this->surname < 12)){
+            $check = true;
+            echo $this->errors['Length'];
+        }
+        return $check;
+    }
+
+    public function checkFormat(){
+        $check = false;
+        $pattern = "/^[a-zA-Z]+$/";
+        if (!preg_match($pattern, $this->surname) || !preg_match($pattern, $this->name)) {
+            $check = true;
+            echo $this->errors['String'];
+        }
+        return $check;
+    }
+
+    public function checkUserExit()
+    {
+        $check = false;
+        if($this->checkUser($this->email)){
+            $check = true;
+            echo " zajęty adres mailowy";
+        }
+        return $check;
+
     }
 
 
