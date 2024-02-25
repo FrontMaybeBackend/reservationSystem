@@ -1,12 +1,16 @@
 <?php
 
 namespace classes\account;
+use classes\compositionClasses\UserExists;
+
 require_once __DIR__ . "/../../includes/autoloader.php";
 class RegisterAccountValidation extends RegisterAccount
 {
 
-    public function __construct($name, $surname, $password, $email, $phone)
+    protected  $userExists;
+    public function __construct($name, $surname, $password, $email, $phone, UserExists $userExists)
     {
+        $this->userExists = $userExists;
         parent::__construct($name, $surname, $password, $email, $phone);
     }
 
@@ -72,7 +76,7 @@ class RegisterAccountValidation extends RegisterAccount
     public function checkUserExit()
     {
         $check = false;
-        if($this->checkUser($this->email)){
+        if($this->userExists->checkUser()){
             $check = true;
             echo " zajęty adres mailowy";
         }

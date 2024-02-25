@@ -1,8 +1,8 @@
 <?php
 require_once __DIR__ . "/../../includes/autoloader.php";
+
 $controller = new \controllers\RegisterAccountController('name','surname','password','email','phone');
 $controller->newAccount();
-
 ?>
 <!DOCTYPE html>
 <html lang="en">

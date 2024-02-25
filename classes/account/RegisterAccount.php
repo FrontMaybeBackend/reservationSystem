@@ -45,23 +45,5 @@ class RegisterAccount extends Connect
 
     }
 
-    public function checkUser($email)
-    {
-        try {
-            $conn = new Connect();
-            $stmt = $conn->newConnect();
-            $sql = $stmt->prepare(('SELECT email FROM users WHERE email = ?'));
-            $sql->bindValue(1, $email);
-            $sql->execute();
-            $result = $sql->fetch();
-            if($result){
-                return true;
-            }
-        } catch (Exception $e) {
-            echo 'Wystąpił błąd: ' . $e->getMessage();
-        }
-        return false;
-    }
-
 
 }
