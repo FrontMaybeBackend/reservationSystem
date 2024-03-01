@@ -24,6 +24,7 @@ class LoginAccountController extends LoginAccountValidation
 
             $checkValidation = new LoginAccountValidation($email, $password, $userExists);
             $checkValidation->checkValidation();
+
         }
     }
 

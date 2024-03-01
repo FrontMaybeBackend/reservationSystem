@@ -1,74 +1,72 @@
 <?php
 
 namespace classes\account;
+
 use classes\compositionClasses\UserExists;
 
 require_once __DIR__ . "/../../includes/autoloader.php";
+
 class RegisterAccountValidation extends RegisterAccount
 {
 
-    protected  $userExists;
+    protected $userExists;
+
     public function __construct($name, $surname, $password, $email, $phone, UserExists $userExists)
     {
         $this->userExists = $userExists;
         parent::__construct($name, $surname, $password, $email, $phone);
     }
 
-   private  $errors = [
-       'Empty'=>"Inputs cant be empty",
-       'Email'=>"Bad format for email",
-       'Length'=> "Name and surname only can have 12 letters",
-       'String'=> "Name and surname only can have letters",
-   ];
 
-
-    public function checkValidation(){
-        $check = false;
-        if($this->checkEmpty()){
-            $check = true;
-        }elseif($this->checkLength()){
-            $check = true;
-        }elseif ($this->checkFormat()){
-            $check = true;
-        }elseif ($this->checkUserExit()){
-            $check = true;
+    public function checkValidation()
+    {
+        try {
+            if ($this->checkEmpty()) {
+                throw new \Exception("Pola nie mogą być puste");
+            } elseif (!$this->checkLength()) {
+                throw new \Exception("Name i surname maksymalnie 12 liter");
+            } elseif ($this->checkFormat()) {
+                throw new \Exception("Imię i nazwa uzytkownika mogą zawierać tylko litery");
+            } elseif ($this->checkUserExit()) {
+                throw new \Exception("Podany adres mailowy jest już zajęty");
+            } else {
+                $newUser = new RegisterAccount($this->name, $this->surname, password_hash($this->password, PASSWORD_DEFAULT), $this->email, $this->phone);
+                $newUser->registerNew();
+                throw new \Exception("Udało się zarejestrować");
+            }
+        } catch (\Exception $e) {
+            echo $e->getMessage();
         }
-        else{
-            $newUser = new RegisterAccount($this->name,$this->surname,password_hash($this->password,PASSWORD_DEFAULT), $this->email, $this->phone);
-            $newUser->registerNew();
-            echo "udało się zarejestrować";
-        }
-        return $check;
 
     }
 
 
-    public function checkEmpty(){
+    public function checkEmpty()
+    {
         $check = false;
-        foreach($this as $key){
-            if(empty($key)){
+        foreach ($this as $key) {
+            if (empty($key)) {
                 $check = true;
-                echo $this->errors['Empty']  ;
             }
         }
         return $check;
     }
 
-    public function checkLength(){
+    public function checkLength()
+    {
         $check = false;
-        if(strlen($this->name < 12) || strlen($this->surname < 12)){
+        if (strlen($this->name) <= 12 || strlen($this->surname) <= 12) {
             $check = true;
-            echo $this->errors['Length'];
         }
         return $check;
     }
 
-    public function checkFormat(){
+    public function checkFormat()
+    {
         $check = false;
         $pattern = "/^[a-zA-Z]+$/";
         if (!preg_match($pattern, $this->surname) || !preg_match($pattern, $this->name)) {
             $check = true;
-            echo $this->errors['String'];
         }
         return $check;
     }
@@ -76,9 +74,8 @@ class RegisterAccountValidation extends RegisterAccount
     public function checkUserExit()
     {
         $check = false;
-        if($this->userExists->checkUser()){
+        if ($this->userExists->checkUser()) {
             $check = true;
-            echo " zajęty adres mailowy";
         }
         return $check;
 

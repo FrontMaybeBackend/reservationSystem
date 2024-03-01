@@ -14,6 +14,8 @@ class LoginAccount extends Connect
 
     protected $password;
 
+
+
     public function __construct($email, $password)
     {
         $this->email = $email;
@@ -35,6 +37,30 @@ class LoginAccount extends Connect
             echo 'Wystąpił błąd: ' . $e->getMessage();
         }
     }
+
+    public function getPassword($email,$password){
+        try {
+            $conn = new Connect();
+            $stmt = $conn->newConnect();
+            $sql = $stmt->prepare('SELECT password FROM users WHERE email = ?');
+            $sql->bindValue(1, $email);
+            $sql->execute();
+            $result = $sql->fetch();
+            if($result){
+                $hashPass = $result['password'];
+                $passFromForm = $password;
+                if(password_verify($passFromForm,$hashPass)){
+                   return true;
+                }else{
+                    return false;
+                }
+            }
+        } catch (Exception $e) {
+            echo 'Wystąpił błąd: ' . $e->getMessage();
+        }
+        return false;
+    }
+
 
 
 

@@ -14,26 +14,27 @@ class LoginAccountValidation extends LoginAccount
        parent::__construct($email, $password);
    }
 
-    private  $errors = [
-        'Empty'=>"Inputs cant be empty",
-        'Email'=>"Bad format for email",
-        'Length'=> "Name and surname only can have 12 letters",
-        'String'=> "Name and surname only can have letters",
-    ];
+
 
     public function checkValidation(){
         $check = false;
-        if($this->checkEmpty()){
-            $check = true;
-        }elseif ($this->checkUserExit()){
-            $check = true;
-        }elseif($this->comparePassword()){
-            $check = true;
-        }
-        else{
-            $newUser = new LoginAccount($this->email,$this->password);
-            $newUser->loginUser();
-            echo "udało się zalogować";
+        try {
+            if ($this->checkEmpty()) {
+                $check = true;
+                throw new \Exception("Pola nie mogą być puste");
+            } elseif ($this->checkUserExit()) {
+                $check = true;
+                throw new \Exception("Nie mamy takiego użytkownika, zarejestruj się");
+            } elseif (!$this->getPassword($this->email, $this->password)) {
+                $check = true;
+                throw new \Exception("Błędne hasło");
+            } else {
+                $newUser = new LoginAccount($this->email, $this->password);
+                $newUser->loginUser();
+                throw new \Exception("Udało się zalogować");
+            }
+        }catch (\Exception $e){
+            echo $e->getMessage();
         }
         return $check;
 
@@ -45,7 +46,6 @@ class LoginAccountValidation extends LoginAccount
         foreach($this as $key){
             if(empty($key)){
                 $check = true;
-                echo $this->errors['Empty']  ;
             }
         }
         return $check;
@@ -57,12 +57,10 @@ class LoginAccountValidation extends LoginAccount
         $check = false;
         if(!$this->userExists->checkUser()){
             $check = true;
-            echo "nie mamy takiego uzytkownika";
         }
         return $check;
 
     }
-
 
 
 
