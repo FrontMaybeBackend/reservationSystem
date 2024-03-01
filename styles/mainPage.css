@@ -1,0 +1,43 @@
+body{
+    margin: 0;
+    padding: 0;
+    display: block;
+}
+
+main{
+    margin-left: 5rem;
+    padding: 1rem;
+}
+
+header{
+    margin-left: 5rem;
+    height: auto;
+    text-align: start;
+    font-family: "Anta", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 0.7rem;
+    background: linear-gradient(to right, #d93838, #fff9f9 75%);
+}
+
+h1{
+    margin: 1rem;
+}
+
+#headerUL{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    list-style: none;
+    font-size: 1rem;
+}
+
+#nav{
+    width: 5rem;
+    height: 100vh;
+    position: fixed;
+    background-color: black;
+    top: 1rem;
+}
+
