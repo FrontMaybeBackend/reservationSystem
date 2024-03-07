@@ -6,28 +6,29 @@
     <link rel="stylesheet" href="../../styles/mainPage.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Anta&display=swap" rel="stylesheet">
     <title>Main</title>
 </head>
 <body>
-<header>
+<header id="headerFront">
     <h1>Reservation System</h1>
     <ul id="headerUL">
         <li><a href="../logging/login.panel.php">Zaloguj</a></li>
         <li><a href="../register/register.panel.php">Register</a></li>
     </ul>
 </header>
-<nav id="nav">
-    <ul>
-        <li><a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a></li>
+<button id="id" class="btn"><i class="fa fa-arrow-right"></i></button>
+<nav id="nav" style="display: none" >
+    <ul id="navUl">
         <li><a href="#">About</a></li>
         <li><a href="#">About</a></li>
         <li><a href="#">About</a></li>
         <li><a href="#">About</a></li>
-
     </ul>
+    <button id="id2" class="btn"><i class="fa fa-arrow-left"></i></button>
 </nav>
-<main>
+<main id="main">
     <p> Lorem ipsum</p>
     <span>What is Lorem Ipsum?
 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
@@ -37,7 +38,23 @@ It is a long established fact that a reader will be distracted by the readable c
 
 </span>
 </main>
+<script>
+    document.getElementById('id').addEventListener("click",openNav);
+    document.getElementById('id2').addEventListener('click',closeNav);
+    function openNav() {
+        document.getElementById('id').style.display='none';
+        document.getElementById('id2').style.display='block';
+        document.getElementById('nav').style.display = "block";
+        document.getElementById('headerFront').style.marginLeft = "5rem";
+    }
 
+    function closeNav() {
+        document.getElementById('id').style.display='block';
+        document.getElementById('id2').style.display='block';
+        document.getElementById('nav').style.display = "none";
+        document.getElementById('headerFront').style.marginLeft = "unset";
+    }
+</script>
 <footer>
     &copy; 2024 Moja Strona
 </footer>
