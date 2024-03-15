@@ -1,6 +1,6 @@
 <?php
 session_start();
-$email = $_SESSION['email'];
+$email = $_SESSION['email'] ?? '';
 echo $email;
 ?>
 
@@ -20,16 +20,20 @@ echo $email;
 </head>
 <body>
 <header id="headerFront">
-    <h1>Reservation System</h1>
+    <h1>
+        <a
+                href="../main/index.php">Reservation System
+        </a>
+    </h1>
     <ul id="headerUL">
         <?php if ($email) {
             ?>
             <li>
                 <form action="../logout/logout.php" method="post">
-                    <button class="btn-warning btn" href="">Wyloguj </button>
+                    <button class="btn-warning btn" href="">Wyloguj</button>
                 </form>
             </li>
-                <?php
+            <?php
         } else { ?>
             <li><a href="../logging/login.panel.php">Zaloguj</a></li>
             <li><a href="../register/register.panel.php">Register</a></li>

@@ -5,7 +5,7 @@ use controllers\HotelsController;
 require_once __DIR__ . "/../../includes/autoloader.php";
 $hotels = new HotelsController();
 $hotels->show();
-$pokazuj = $hotels->results;
+$displayHotels = $hotels->results;
 
 ?>
 
@@ -24,14 +24,14 @@ $pokazuj = $hotels->results;
 </head>
 <body>
 <?php include_once('../main/index.php');?>
-<?php foreach ($pokazuj as $pokazuju) { ?>
+<?php foreach ($displayHotels as $displayHotel) { ?>
 <div class="card" style="width: 18rem; background: beige; padding-top: 2rem">
     <img src="" class="card-img-top" alt="...">
     <div class="card-body">
         <h5 class="card-title">
             <?php
-            echo $pokazuju['Name'];
-            echo $pokazuju['Address'];
+            echo $displayHotel['Name'];
+            echo $displayHotel['Address'];
             ?>
         </h5>
         <p class="card-text">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...</p>
