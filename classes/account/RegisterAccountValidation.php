@@ -32,7 +32,7 @@ class RegisterAccountValidation extends RegisterAccount
             } else {
                 $newUser = new RegisterAccount($this->name, $this->surname, password_hash($this->password, PASSWORD_DEFAULT), $this->email, $this->phone);
                 $newUser->registerNew();
-                throw new \Exception("Udało się zarejestrować");
+                header("Location: ../register/register.succesfully.html");
             }
         } catch (\Exception $e) {
             echo $e->getMessage();

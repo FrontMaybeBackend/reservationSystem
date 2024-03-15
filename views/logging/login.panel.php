@@ -1,9 +1,10 @@
 <?php
-
 use controllers\LoginAccountController;
-
+session_start();
 require_once __DIR__ . "/../../includes/autoloader.php";
 $userLogin = new LoginAccountController('email', 'password');
+$_SESSION['email'] = $_POST['email'] ?? '';
+echo $_SESSION['email'];
 $userLogin->loginUser();
 ?>
 
@@ -41,7 +42,6 @@ $userLogin->loginUser();
                     <a type="submit" href="../register/register.panel.php ">Zarejestruj sie</a>
                     </p>
             </form>
-
         </div>
     </div>
 </main>

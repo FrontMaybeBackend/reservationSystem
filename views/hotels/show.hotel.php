@@ -6,6 +6,7 @@ require_once __DIR__ . "/../../includes/autoloader.php";
 $hotels = new HotelsController();
 $hotels->show();
 $pokazuj = $hotels->results;
+
 ?>
 
 
@@ -22,7 +23,7 @@ $pokazuj = $hotels->results;
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
-
+<?php include_once('../main/index.php');?>
 <?php foreach ($pokazuj as $pokazuju) { ?>
 <div class="card" style="width: 18rem; background: beige; padding-top: 2rem">
     <img src="" class="card-img-top" alt="...">
@@ -33,10 +34,8 @@ $pokazuj = $hotels->results;
             echo $pokazuju['Address'];
             ?>
         </h5>
-
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-            content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+        <p class="card-text">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...</p>
+        <a href="#" class="btn btn-primary">Check</a>
     </div>
     <?php } ?>
 </div>

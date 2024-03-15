@@ -22,9 +22,10 @@ h1{
 
 #headerUL{
     display: flex;
-    flex-direction: column;
+    flex-direction: row-reverse;
     flex-wrap: wrap;
     align-items: flex-end;
+    justify-content: space-evenly;
     list-style: none;
     font-size: 1rem;
 }
@@ -53,7 +54,7 @@ footer{
 
 #navUl {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: start;
     align-items: start;
     padding-left: 1rem;

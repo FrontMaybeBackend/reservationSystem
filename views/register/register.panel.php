@@ -22,7 +22,7 @@ $controller->newAccount();
 <main>
     <div id="container">
         <div id="form">
-            <form action="register.panel.php?success" method="POST">
+            <form action="" method="POST">
                 <div class="input-container">
                     <input type="text" id="name" name="name" maxlength="12" required placeholder="First name"><br>
                     <i class="fa fa-user icon"></i>

@@ -31,7 +31,7 @@ class LoginAccountValidation extends LoginAccount
             } else {
                 $newUser = new LoginAccount($this->email, $this->password);
                 $newUser->loginUser();
-                throw new \Exception("Udało się zalogować");
+                header("Location: ../main/index.php");
             }
         }catch (\Exception $e){
             echo $e->getMessage();
