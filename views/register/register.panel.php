@@ -40,7 +40,7 @@ $controller->newAccount();
                     <i class="fa fa-lock icon"></i>
                 </div>
                 <div class="input-container">
-                    <input type="text" id="phone" name="phone" placeholder="Phone"><br>
+                    <input type="tel" id="phone" name="phone" placeholder="Phone"><br>
                     <i class="fa fa-phone icon"></i>
                 </div>
                 <input id="register" type="submit" value="Zarejestruj">

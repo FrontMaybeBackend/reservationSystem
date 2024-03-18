@@ -9,20 +9,23 @@ require_once __DIR__ . "/../includes/autoloader.php";
 
 class LoginAccountController extends LoginAccountValidation
 {
-    public function __construct($email, $password)
+    protected  string $email;
+    protected  string $password;
+    public function __construct(string $email, string $password)
     {
-
+        $this->email = $email;
+        $this->password = $password;
     }
 
     public function loginUser()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
-            $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-            $userExists = new UserExists($email);
+            $this->email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+            $this->password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $userExists = new UserExists($this->email);
 
 
-            $checkValidation = new LoginAccountValidation($email, $password, $userExists);
+            $checkValidation = new LoginAccountValidation($this->email, $this->password, $userExists);
             $checkValidation->checkValidation();
 
         }

@@ -7,10 +7,10 @@ use Exception;
 
 class UserExists extends Connect
 {
-    protected $email;
-    public function __construct($email)
+    protected string $email;
+    public function __construct(string $email)
     {
-        $this->email = $email;
+        $this->email =$email;
     }
 
     public function checkUser()

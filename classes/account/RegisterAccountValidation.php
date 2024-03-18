@@ -11,7 +11,7 @@ class RegisterAccountValidation extends RegisterAccount
 
     protected $userExists;
 
-    public function __construct($name, $surname, $password, $email, $phone, UserExists $userExists)
+    public function __construct(string $name, string $surname, string $password, string $email, ?string $phone, UserExists $userExists)
     {
         $this->userExists = $userExists;
         parent::__construct($name, $surname, $password, $email, $phone);

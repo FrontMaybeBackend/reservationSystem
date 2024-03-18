@@ -10,14 +10,14 @@ require_once __DIR__ . "/../../includes/autoloader.php";
 
 class RegisterAccount extends Connect
 {
-    protected $name;
-    protected $surname;
+    protected string $name;
+    protected string $surname;
 
-    protected $password;
-    protected $email;
-    protected $phone;
+    protected string $password;
+    protected string $email;
+    protected ?string $phone;
 
-    public function __construct($name, $surname, $password, $email, $phone)
+    public function __construct(string $name, string $surname,string $password, string$email, ?string $phone)
     {
         $this->name = $name;
         $this->surname = $surname;

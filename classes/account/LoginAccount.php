@@ -10,13 +10,13 @@ require_once __DIR__ . "/../../includes/autoloader.php";
 class LoginAccount extends Connect
 {
 
-    protected $email;
+    protected string $email;
 
-    protected $password;
+    protected string $password;
 
 
 
-    public function __construct($email, $password)
+    public function __construct(string $email, string $password)
     {
         $this->email = $email;
         $this->password = $password;

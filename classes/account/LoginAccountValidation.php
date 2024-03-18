@@ -1,22 +1,25 @@
 <?php
 
 namespace classes\account;
+
 use classes\compositionClasses\UserExists;
 
 require_once __DIR__ . "/../../includes/autoloader.php";
+
 class LoginAccountValidation extends LoginAccount
 {
 
-    protected  $userExists;
-   public function __construct($email, $password, UserExists $userExists)
-   {
-       $this->userExists = $userExists;
-       parent::__construct($email, $password);
-   }
+    protected $userExists;
+
+    public function __construct(string $email, string $password, UserExists $userExists)
+    {
+        $this->userExists = $userExists;
+        parent::__construct($email, $password);
+    }
 
 
-
-    public function checkValidation(){
+    public function checkValidation()
+    {
         $check = false;
         try {
             if ($this->checkEmpty()) {
@@ -33,7 +36,7 @@ class LoginAccountValidation extends LoginAccount
                 $newUser->loginUser();
                 header("Location: ../main/index.php");
             }
-        }catch (\Exception $e){
+        } catch (\Exception $e) {
             echo $e->getMessage();
         }
         return $check;
@@ -41,10 +44,11 @@ class LoginAccountValidation extends LoginAccount
     }
 
 
-    public function checkEmpty(){
+    public function checkEmpty()
+    {
         $check = false;
-        foreach($this as $key){
-            if(empty($key)){
+        foreach ($this as $key) {
+            if (empty($key)) {
                 $check = true;
             }
         }
@@ -55,15 +59,12 @@ class LoginAccountValidation extends LoginAccount
     public function checkUserExit()
     {
         $check = false;
-        if(!$this->userExists->checkUser()){
+        if (!$this->userExists->checkUser()) {
             $check = true;
         }
         return $check;
 
     }
-
-
-
 
 
 }
