@@ -1,0 +1,13 @@
+{
+    "name": "krzychu/reservation-system",
+    "description": "reservation system for learning",
+    "require-dev": {
+        "phpunit/phpunit": "^11.0"
+    },
+    "authors": [
+        {
+            "name": "FrontMaybeBackend"
+        }
+    ],
+    "require": {}
+}

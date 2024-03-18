@@ -40,7 +40,7 @@ $email = $_SESSION['email'] ?? '';
         <nav>
             <ul id="navUl">
                 <li><a href="../hotels/show.hotel.php">Hotels</a></li>
-                <li><a href="#">About</a></li>
+                <li><a href="../rooms/show.rooms.php">Rooms</a></li>
                 <li><a href="#">About</a></li>
                 <li><a href="#">About</a></li>
             </ul>
