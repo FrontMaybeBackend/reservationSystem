@@ -12,7 +12,7 @@ class Rooms extends Connect
         try {
             $conn = new Connect();
             $stmt = $conn->newConnect();
-            $sql = $stmt->prepare('SELECT * FROM rooms INNER JOIN hotel ON rooms.hotelID=hotel.HotelID WHERE usersID = 0; ');
+            $sql = $stmt->prepare('SELECT * FROM rooms INNER JOIN hotel ON rooms.hotelID=hotel.HotelID WHERE usersID is NULL; ');
             $sql->execute();
             $this->results = $sql->fetchAll(\PDO::FETCH_ASSOC);
             foreach ($this->results as $result){
