@@ -1,6 +1,6 @@
 <?php
 
-use controllers\RegisterAccountController;
+use src\controllers\RegisterAccountController;
 
 require_once __DIR__ . "/../../includes/autoloader.php";
 
@@ -12,7 +12,7 @@ $controller->newAccount();
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="../../styles/register.css">
+    <link rel="stylesheet" href="../../assets/styles/register.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">

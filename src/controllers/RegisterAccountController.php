@@ -1,12 +1,14 @@
 <?php
 
-namespace controllers;
+namespace src\controllers;
 
 
-use classes\account\RegisterAccountValidation;
-use classes\compositionClasses\UserExists;
+use src\dependencyClasses\UserExists;
+use src\validationClasses\RegisterAccountValidation;
 
-require_once __DIR__ . "/../includes/autoloader.php";
+
+
+require_once __DIR__ . "/../../includes/autoloader.php";
 
 
 class RegisterAccountController extends RegisterAccountValidation

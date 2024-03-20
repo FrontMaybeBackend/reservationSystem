@@ -1,5 +1,7 @@
 <?php
-use controllers\HotelsController;
+
+use src\controllers\HotelsController;
+
 include_once('../main/index.php');
 require_once __DIR__ . "/../../includes/autoloader.php";
 $hotels = new HotelsController();

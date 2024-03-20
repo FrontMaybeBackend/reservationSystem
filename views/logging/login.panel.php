@@ -1,5 +1,7 @@
 <?php
-use controllers\LoginAccountController;
+
+use src\controllers\LoginAccountController;
+
 session_start();
 require_once __DIR__ . "/../../includes/autoloader.php";
 $userLogin = new LoginAccountController('email', 'password');
@@ -14,7 +16,7 @@ $userLogin->loginUser();
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="../../styles/login.css">
+    <link rel="stylesheet" href="../../assets/styles/login.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">

@@ -1,12 +1,12 @@
 <?php
 
-namespace classes\hotels;
+namespace src\models;
 
-use classes\database\Connect;
+use database\Connect;
 use Exception;
 
 require_once __DIR__ . "/../../includes/autoloader.php";
-class GetHotels extends Connect
+class Hotels extends Connect
 {
     public $results;
     public function getHotel()

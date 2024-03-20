@@ -1,8 +1,9 @@
 <?php
 
-namespace classes\compositionClasses;
+namespace src\dependencyClasses;
 require_once __DIR__ . "/../../includes/autoloader.php";
-use classes\database\Connect;
+
+use database\Connect;
 use Exception;
 
 class UserExists extends Connect

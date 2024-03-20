@@ -1,8 +1,9 @@
 <?php
 
-namespace classes\account;
+namespace src\validationClasses;
 
-use classes\compositionClasses\UserExists;
+use src\dependencyClasses\UserExists;
+use src\models\RegisterAccount;
 
 require_once __DIR__ . "/../../includes/autoloader.php";
 
