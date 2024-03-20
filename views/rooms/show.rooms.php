@@ -1,12 +1,12 @@
 <?php
 
-use src\controllers\HotelsController;
+use src\controllers\RoomsController;
 
 include_once('../main/index.php');
 require_once __DIR__ . "/../../includes/autoloader.php";
-$hotels = new HotelsController();
-$hotels->show();
-$displayHotels = $hotels->results;
+$rooms = new RoomsController();
+$rooms->show();
+$displayRooms = $rooms->results;
 
 ?>
 
@@ -25,14 +25,15 @@ $displayHotels = $hotels->results;
 </head>
 <body>
 <button class="btn btn-success">Add</button>
-<?php foreach ($displayHotels as $displayHotel) { ?>
+<?php foreach ($displayRooms as $displayRoom) { ?>
 <div class="card" style="width: 18rem; background: beige; padding-top: 2rem">
     <img src="" class="card-img-top" alt="...">
     <div class="card-body">
         <h5 class="card-title">
             <?php
-            echo $displayHotel['Name'];
-            echo $displayHotel['Address'];
+            echo $displayRoom['number'];
+            echo $displayRoom['Name'];
+            echo $displayRoom['hotelID'];
             ?>
         </h5>
         <p class="card-text">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...</p>
