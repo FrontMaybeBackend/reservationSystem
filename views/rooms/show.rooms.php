@@ -26,26 +26,28 @@ $displayRooms = $rooms->results;
 <body>
 <button class="btn btn-success">Add</button>
 <?php foreach ($displayRooms as $displayRoom) { ?>
-<div class="card" style="width: 18rem; background: beige; padding-top: 2rem">
-    <img src="" class="card-img-top" alt="...">
-    <div class="card-body">
-        <div class="card-header"
-        <h5 class="card-title">
-            Hotel  name: <?php echo $displayRoom['Name'] ?>
-        </h5>
-    </div>
+    <div class="card" style="width: 18rem; background: beige; padding-top: 2rem">
+        <img src="" class="card-img-top" alt="...">
+        <div class="card-body">
+            <div class="card-body">
+            <div class="card-header">
+            <h5 class="card-title">
+                Hotel name: <?php echo $displayRoom['Name'] ?>
+            </h5>
+            </div>
+        </div>
         <ul class="list-group list-group-flush">
             <li class="list-group-item">Number room: <?php echo $displayRoom['number'] ?></li>
-            <li class="list-group-item">Floor:  <?php echo $displayRoom['floor'] ?> </li>
+            <li class="list-group-item">Floor: <?php echo $displayRoom['floor'] ?> </li>
         </ul>
-        <p class="card-text">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...</p>
+        <p class="card-text">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci
+            velit...</p>
         <a href="#" class="btn btn-primary">Check</a>
-        <button class="btn btn-info"  >Edit</button>
-        <button class="btn btn-danger" >Delete</button>
+        <button class="btn btn-info">Edit</button>
+        <button class="btn btn-danger">Delete</button>
     </div>
-    <?php } ?>
+<?php } ?>
 </div>
-
 
 
 </body>

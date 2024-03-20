@@ -14,7 +14,7 @@ class Hotels extends Connect
         try {
             $conn = new Connect();
             $stmt = $conn->newConnect();
-            $sql = $stmt->prepare('SELECT  Name,Address,Phone,Stars,CheckinTime,CheckoutTime,COUNT(roomID) FROM hotel INNER JOIN rooms ON hotel.HotelID = rooms.hotelID WHERE rooms.usersID IS NULL GROUP BY hotel.hotelID; ');
+            $sql = $stmt->prepare('SELECT  Name,Address,Phone,Stars,CheckinTime,CheckoutTime,COUNT(roomID) AS NumberOfRooms FROM hotel INNER JOIN rooms ON hotel.HotelID = rooms.hotelID WHERE rooms.usersID IS NULL GROUP BY hotel.hotelID;');
             $sql->execute();
             $this->results = $sql->fetchAll(\PDO::FETCH_ASSOC);
             foreach ($this->results as $result){

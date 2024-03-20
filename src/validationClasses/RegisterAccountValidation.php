@@ -31,9 +31,7 @@ class RegisterAccountValidation extends RegisterAccount
             } elseif ($this->checkUserExit()) {
                 throw new \Exception("Podany adres mailowy jest już zajęty");
             } else {
-                $newUser = new RegisterAccount($this->name, $this->surname, password_hash($this->password, PASSWORD_DEFAULT), $this->email, $this->phone);
-                $newUser->registerNew();
-                header("Location: ../register/register.succesfully.html");
+                return true;
             }
         } catch (\Exception $e) {
             echo $e->getMessage();

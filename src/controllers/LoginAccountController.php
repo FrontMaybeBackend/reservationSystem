@@ -4,6 +4,7 @@ namespace src\controllers;
 
 
 use src\dependencyClasses\UserExists;
+use src\models\LoginAccount;
 use src\validationClasses\LoginAccountValidation;
 
 
@@ -29,7 +30,12 @@ class LoginAccountController extends LoginAccountValidation
 
 
             $checkValidation = new LoginAccountValidation($this->email, $this->password, $userExists);
-            $checkValidation->checkValidation();
+
+            if($checkValidation->checkValidation() === true){
+                $newUser = new LoginAccount($this->email, $this->password);
+                $newUser->loginUser();
+                header("Location: ../main/index.php");
+            };
 
         }
     }

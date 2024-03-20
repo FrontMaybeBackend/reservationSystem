@@ -32,9 +32,7 @@ class LoginAccountValidation extends LoginAccount
                 $check = true;
                 throw new \Exception("Błędne hasło");
             } else {
-                $newUser = new LoginAccount($this->email, $this->password);
-                $newUser->loginUser();
-                header("Location: ../main/index.php");
+                return true;
             }
         } catch (\Exception $e) {
             echo $e->getMessage();

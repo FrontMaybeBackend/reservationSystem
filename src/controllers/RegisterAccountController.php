@@ -4,6 +4,7 @@ namespace src\controllers;
 
 
 use src\dependencyClasses\UserExists;
+use src\models\RegisterAccount;
 use src\validationClasses\RegisterAccountValidation;
 
 
@@ -45,7 +46,13 @@ class RegisterAccountController extends RegisterAccountValidation
             $userExists = new UserExists($this->email);
 
             $checkValidation = new RegisterAccountValidation($this->name, $this->surname, $this->password, $this->email, $this->phone, $userExists);
-            $checkValidation->checkValidation();
+
+
+            if($checkValidation->checkValidation() === true){
+                $newUser = new RegisterAccount($this->name, $this->surname, password_hash($this->password, PASSWORD_DEFAULT), $this->email, $this->phone);
+                $newUser->registerNew();
+                header("Location: ../register/register.succesfully.html");
+            }
         }
     }
 
