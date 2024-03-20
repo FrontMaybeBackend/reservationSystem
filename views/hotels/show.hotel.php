@@ -29,17 +29,25 @@ $displayHotels = $hotels->results;
 <div class="card" style="width: 18rem; background: beige; padding-top: 2rem">
     <img src="" class="card-img-top" alt="...">
     <div class="card-body">
-        <h5 class="card-title">
-            <?php
-            echo $displayHotel['Name'];
-            echo $displayHotel['Address'];
-            ?>
-        </h5>
+        <div class="card-body">
+            <div class="card-header"
+            <h5 class="card-title">
+                Hotel  name: <?php echo $displayHotel['Name'] ?>
+            </h5>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">Address: <?php echo $displayHotel['Address'] ?></li>
+            <li class="list-group-item">Phone:  <?php echo $displayHotel['Phone'] ?> </li>
+            <li class="list-group-item">Stars:  <?php echo $displayHotel['Stars'] ?> </li>
+            <li class="list-group-item">Available Rooms:  <?php echo $displayHotel['COUNT(roomID)'] ?> </li>
+
+        </ul>
         <p class="card-text">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit...</p>
         <a href="#" class="btn btn-primary">Check</a>
         <button class="btn btn-info"  >Edit</button>
         <button class="btn btn-danger" >Delete</button>
     </div>
+
     <?php } ?>
 </div>
 

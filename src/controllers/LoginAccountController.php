@@ -11,6 +11,7 @@ require_once __DIR__ . "/../../includes/autoloader.php";
 
 class LoginAccountController extends LoginAccountValidation
 {
+
     public  string $email;
     public  string $password;
     public function __construct(string $email, string $password)
